@@ -1430,12 +1430,12 @@ int map::bash_rating(const int str, const int x, const int y)
     } else if ( ter_at(x, y).bash.str_max != -1 ) {
         ter_smash = true;
     }
-    
+
     if (!furn_smash && !ter_smash) {
     //There must be a vehicle there!
         return 10;
     }
-    
+
     int bash_min = 0;
     int bash_max = 0;
     if (furn_smash) {
@@ -1450,7 +1450,7 @@ int map::bash_rating(const int str, const int x, const int y)
     } else if (str >= bash_max) {
         return 10;
     }
-    
+
     return (10 * (str - bash_min)) / (bash_max - bash_min);
 }
 
@@ -1472,7 +1472,7 @@ void map::make_rubble(const int x, const int y, furn_id rubble_type, bool items,
         if (move_cost(x, y) <= 0) {
             ter_set(x, y, floor_type);
         }
-        
+
         furn_set(x, y, rubble_type);
     }
     if (items) {
@@ -3906,14 +3906,14 @@ void map::draw(WINDOW* w, const point center)
          (u_sight_impaired && lit != LL_BRIGHT) ||
           !can_see))) {
     if (u_is_boomered)
-     mvwputch(w, realy+getmaxy(w)/2 - center.y, realx+getmaxx(w)/2 - center.x, c_magenta, '#');
+     mvwputch(w, realy+getmaxy(w)/2 - center.y, realx+getmaxx(w)/2 - center.x, c_magenta, ' ');
     else
-         mvwputch(w, realy+getmaxy(w)/2 - center.y, realx+getmaxx(w)/2 - center.x, c_dkgray, '#');
+         mvwputch(w, realy+getmaxy(w)/2 - center.y, realx+getmaxx(w)/2 - center.x, c_dkgray, ' ');
    } else if (dist > light_sight_range && u_sight_impaired && lit == LL_BRIGHT) {
     if (u_is_boomered)
-     mvwputch(w, realy+getmaxy(w)/2 - center.y, realx+getmaxx(w)/2 - center.x, c_pink, '#');
+     mvwputch(w, realy+getmaxy(w)/2 - center.y, realx+getmaxx(w)/2 - center.x, c_pink, ' ');
     else
-     mvwputch(w, realy+getmaxy(w)/2 - center.y, realx+getmaxx(w)/2 - center.x, c_ltgray, '#');
+     mvwputch(w, realy+getmaxy(w)/2 - center.y, realx+getmaxx(w)/2 - center.x, c_ltgray, ' ');
    } else if (dist <= u_clairvoyance || can_see) {
     if (bRainOutside && INBOUNDS(realx, realy) && is_outside(realx, realy))
      g->mapRain[realy + getmaxy(w)/2 - center.y][realx + getmaxx(w)/2 - center.x] = true;
